@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feature/Fixes Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        th, td {
+            text-align: left;
+        }
+        th.filter-active {
+            background-color: #d9d9d9;
+        }
+    </style>
+    <script>
+        function filterByVersion() {
+            const versionFilter = document.getElementById('versionFilter').value;
+            const table = document.getElementById('featureTable');
+            const rows = table.getElementsByTagName('tr');
+
+            for (let i = 1; i < rows.length; i++) {
+                let cells = rows[i].getElementsByTagName('td');
+                if (cells.length > 0) {
+                    let version = cells[2].innerText;
+                    if (versionFilter === "" || version === versionFilter) {
+                        rows[i].style.display = "";
+                    } else {
+                        rows[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Feature/Fixes Information</h1>
+    <label for="versionFilter">Filter by Version: </label>
+    <select id="versionFilter" onchange="filterByVersion()">
+        <option value="">All</option>
+        <option value="9.0.3-p8">9.0.3-p8</option>
+        <option value="9.0.3-p3">9.0.3-p3</option>
+        <option value="9.0.1">9.0.1</option>
+        <option value="9">9</option>
+        <option value="9.0.3-p15">9.0.3-p15</option>
+        <option value="9.0.3-p14">9.0.3-p14</option>
+        <option value="9.0.3-p13">9.0.3-p13</option>
+        <option value="9.0.3-p12">9.0.3-p12</option>
+        <option value="9.0.3-p11">9.0.3-p11</option>
+        <option value="9.0.3-p10">9.0.3-p10</option>
+        <option value="9.0.3-p9">9.0.3-p9</option>
+        <option value="9.0.3-p7">9.0.3-p7</option>
+    </select>
+    
+    <table id="featureTable">
+        <thead>
+            <tr>
+                <th>Feature/Fixes</th>
+                <th>New Feature/Fixes</th>
+                <th>Version</th>
+                <th>Description</th>
+                <th>Benefits</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Support for AOS 6.8</td>
+                <td>New Feature</td>
+                <td>9.0.3-p8</td>
+                <td>Rubrik CDM version 9.0.3-p8 supports the Nutanix Acropolis Operating System (AOS) version 6.8.</td>
+                <td>Enhanced compatibility and support for the latest version of Nutanix AOS.</td>
+            </tr>
+            <tr>
+                <td>Updated firmware for R6000 drives</td>
+                <td>New Feature</td>
+                <td>9.0.3-p3</td>
+                <td>Rubrik CDM 9.0.3-p3 includes updated firmware for selected hard drives on the R6000 platform.</td>
+                <td>Improved drive performance and operation.</td>
+            </tr>
+            <tr>
+                <td>CloudOut Support for Azure Cold Tier</td>
+                <td>New Feature</td>
+                <td>9.0.1</td>
+                <td>Allows lifecycle management policies to tier data to Azure cold tier.</td>
+                <td>Cost savings with automated tiering to a lower-cost storage tier without manual intervention.</td>
+            </tr>
+            <tr>
+                <td>Oracle Secure External Password Store (SEPS)</td>
+                <td>New Feature</td>
+                <td>9.0.1</td>
+                <td>Rubrik CDM 9.0.1 supports Oracle SEPS wallet for secure storage of passwords, allowing log switch and backup in MOUNTED mode.</td>
+                <td>Enhanced security and streamlined backups without needing primary database registration.</td>
+            </tr>
+            <tr>
+                <td>Db2 high availability disaster recovery (HADR) state transition</td>
+                <td>New Feature</td>
+                <td>9.0.1</td>
+                <td>Automates handling of Db2 database state between HADR and standalone state during maintenance.</td>
+                <td>Simplifies maintenance and reduces downtime during state transitions.</td>
+            </tr>
+            <tr>
+                <td>Implementation of SAP HANA user store (hdbuserstore)</td>
+                <td>New Feature</td>
+                <td>9.0.1</td>
+                <td>Securely stores and manages user credentials for connecting to SAP HANA databases.</td>
+                <td>Improved security and easier management of credentials for SAP HANA database tasks.</td>
+            </tr>
+            <tr>
+                <td>Oracle bigfile tablespace multi-node restores</td>
+                <td>New Feature</td>
+                <td>9.0.1</td>
+                <td>Support for faster restores and clones for Oracle bigfile tablespaces larger than 1 TB.</td>
+                <td>Significantly faster restore times for large tablespaces, enhancing data recovery performance.</td>
+            </tr>
+            <tr>
+                <td>Passwordless discovery of Db2 instances</td>
+                <td>New Feature</td>
+                <td>9.0.1</td>
+                <td>Eliminates the need to specify Db2 username and password for instance discovery.</td>
+                <td>Simplifies the discovery process and enhances ease of use with password management systems.</td>
+            </tr>
+            <tr>
+                <td>Native protection of MongoDB Replica Set</td>
+                <td>New Feature</td>
+                <td>9.0.1</td>
+                <td>Provides native protection for MongoDB.</td>
+                <td>Streamlined backup and recovery processes for MongoDB environments.</td>
+            </tr>
+            <tr>
+                <td>Cloud Cluster Elastic Storage (CCES) cloud space enforcement precheck</td>
+                <td>New Feature</td>
+                <td>9.0.1</td>
+                <td>Adds a precheck to monitor and notify about cluster space usage nearing capacity.</td>
+                <td>Prevents interruptions in operations by proactively managing available storage space.</td>
+            </tr>
+            <tr>
+                <td>Active Directory Domain Service on-premises protection support</td>
+                <td>New Feature</td>
+                <td>9.0.1</td>
+                <td>Supports the protection and recovery of Active Directory Domain Services through Rubrik Security Cloud.</td>
+                <td>Enhances the security and recovery capabilities for on-premises Active Directory domains.</td>
+            </tr>
+            <tr>
+                <td>Use of SYSBACKUP for Oracle backup and recovery workflows</td>
+                <td>New Feature</td>
+                <td>9</td>
+                <td>Supports using SYSBACKUP mode for database queries and Oracle scripts.</td>
+                <td>Improved database security and streamlined backup processes.</td>
+            </tr>
+            <tr>
+                <td>Automatic Recoverability support for Cloud Cluster Elastic Storage (CCES)</td>
+                <td>New Feature</td>
+                <td>9</td>
+                <td>Metadata with immutability enabled is automatically uploaded to the CCES bucket.</td>
+                <td>Ensures the durability and recoverability of metadata in cloud environments.</td>
+            </tr>
+            <tr>
+                <td>Support for SQL Server 2022</td>
+                <td>New Feature</td>
+                <td>9</td>
+                <td>Rubrik CDM supports SQL Server 2022.</td>
+                <td>Provides compatibility with the latest version of SQL Server for improved performance and features.</td>
+            </tr>
+            <tr>
+                <td>Support for VMware vSphere 8.0</td>
+                <td>New Feature</td>
+                <td>9</td>
+                <td>Rubrik CDM supports VMware vSphere 8.0.</td>
+                <td>Ensures compatibility with the latest VMware vSphere release for enhanced virtualization support.</td>
+            </tr>
+            <tr>
+                <td>Bootstrap with IPv6</td>
+                <td>New Feature</td>
+                <td>9</td>
+                <td>Allows bootstrapping Rubrik clusters with IPv6 support for both physical and virtual clusters.</td>
+                <td>Provides modern network protocol support and future-proofing for Rubrik deployments.</td>
+            </tr>
+            <tr>
+                <td>Oracle Data Guard automated same host recovery</td>
+                <td>New Feature</td>
+                <td>9</td>
+                <td>Adds fully-automated restores to the source host for Oracle Data Guard same host recoveries.</td>
+                <td>Simplifies and accelerates the recovery process for Oracle Data Guard environments.</td>
+            </tr>
+            <tr>
+                <td>Service account recovery for Rubrik CDM APIs and workflows</td>
+                <td>New Feature</td>
+                <td>9</td>
+                <td>Supports using a service account to recover workloads via API calls in the event of RSC unavailability.</td>
+                <td>Ensures continuous access to recovery operations even during RSC outages.</td>
+            </tr>
+            <tr>
+                <td>User-managed Db2 backup sessions and backup parallelism</td>
+                <td>New Feature</td>
+                <td>9</td>
+                <td>Provides configuration parameters for tuning backup performance of Db2 backups.</td>
+                <td>Improves backup performance and efficiency for Db2 workloads.</td>
+            </tr>
+            <tr>
+                <td>Rolling upgrade support</td>
+                <td>New Feature</td>
+                <td>9</td>
+                <td>Allows upgrading Rubrik CDM clusters node by node without interrupting ongoing backup and restore jobs.</td>
+                <td>Minimizes downtime and ensures continuity of protection during upgrades.</td>
+            </tr>
+            <tr>
+                <td>Duplicate backups after NAS migration</td>
+                <td>Fixes</td>
+                <td>9.0.3-p15</td>
+                <td>Addressed the issue of multiple shares having duplicate backups at both share and directory levels after NAS migration.</td>
+                <td>Ensures efficient data protection and eliminates redundant backups, optimizing storage usage.</td>
+            </tr>
+            <tr>
+                <td>NAS backup relic issue</td>
+                <td>Fixes</td>
+                <td>9.0.3-p15</td>
+                <td>Fixed the issue where NAS backup fails as filesets are marked as relics.</td>
+                <td>Improves the reliability and continuity of NAS backups.</td>
+            </tr>
+            <tr>
+                <td>Disk firmware upgrade issue</td>
+                <td>Fixes</td>
+                <td>9.0.3-p15</td>
+                <td>Resolved the issue where disk firmware upgrade does not apply to certain disks during Rubrik CDM version upgrades.</td>
+                <td>Ensures that all disk firmware upgrades are successfully applied, enhancing system stability.</td>
+            </tr>
+            <tr>
+                <td>Missing documentation for data traffic</td>
+                <td>Fixes</td>
+                <td>9.0.3-p15</td>
+                <td>Added detailed documentation for undocumented data traffic and allowed potential disablement of the reporting service.</td>
+                <td>Provides clear documentation and better control over data traffic reporting, enhancing transparency and security.</td>
+            </tr>
+            <tr>
+                <td>Oracle database restore failure</td>
+                <td>Fixes</td>
+                <td>9.0.3-p15</td>
+                <td>Fixed Oracle database restore failure due to instance number configuration mismatch.</td>
+                <td>Ensures successful Oracle database restoration and improves reliability of the recovery process.</td>
+            </tr>
+            <tr>
+                <td>Managed volume backup failure</td>
+                <td>Fixes</td>
+                <td>9.0.3-p15</td>
+                <td>Addressed the managed volume backup failure due to chmod error during mount operation.</td>
+                <td>Improves managed volume backup reliability and reduces interruptions in backup workflows.</td>
+            </tr>
+            <tr>
+                <td>Archival job status issue</td>
+                <td>Fixes</td>
+                <td>9.0.3-p15</td>
+                <td>Resolved the issue where archival jobs display as active in the UI even after completion.</td>
+                <td>Ensures accurate job status updates, reducing confusion and enhancing monitoring.</td>
+            </tr>
+            <tr>
+                <td>NAS backup discovery issue</td>
+                <td>Fixes</td>
+                <td>9.0.3-p15</td>
+                <td>Fixed the failure of NAS backup discovery job to list shares correctly, causing interruptions.</td>
+                <td>Enhances the reliability of NAS backup discovery processes.</td>
+            </tr>
+            <tr>
+                <td>Fileset backup failure on NAS</td>
+                <td>Fixes</td>
+                <td>9.0.3-p14</td>
+                <td>Resolved the issue of fileset backups failing on NAS after RSC migration.</td>
+                <td>Ensures continuity of NAS protection after migration, reducing backup failures.</td>
+            </tr>
+            <tr>
+                <td>Tempo-agent reporting issue</td>
+                <td>Fixes</td>
+                <td>9.0.3-p14</td>
+                <td>Addressed the issue where tempo-agent reports anonymous stats to external websites.</td>
+                <td>Enhances privacy and control over outbound data reporting.</td>
+            </tr>
+            <tr>
+                <td>Virtual machine backup failure</td>
+                <td>Fixes</td>
+                <td>9.0.3-p14</td>
+                <td>Fixed the failure of virtual machine backup due to a missing base snapshot.</td>
+                <td>Improves reliability and success rate of virtual machine backups.</td>
+            </tr>
+            <tr>
+                <td>Oracle database restore configuration mismatch</td>
+                <td>Fixes</td>
+                <td>9.0.3-p14</td>
+                <td>Resolved the restore failure due to mismatch in configuration between spfile and svrctl configs.</td>
+                <td>Ensures consistent Oracle database restoration and improves recovery reliability.</td>
+            </tr>
+            <tr>
+                <td>Archive consolidation failure</td>
+                <td>Fixes</td>
+                <td>9.0.3-p14</td>
+                <td>Fixed archive consolidation job failure due to out-of-memory issues.</td>
+                <td>Ensures smooth completion of archive consolidation jobs, enhancing archival operations.</td>
+            </tr>
+            <tr>
+                <td>SQL log backup failure</td>
+                <td>Fixes</td>
+                <td>9.0.3-p14</td>
+                <td>Addressed the issue of multiple SQL log backup jobs failing with certificate errors.</td>
+                <td>Improves reliability of SQL log backups by resolving certificate-related issues.</td>
+            </tr>
+            <tr>
+                <td>SAP HANA job progression issue</td>
+                <td>Fixes</td>
+                <td>9.0.3-p13</td>
+                <td>Fixed the issue of SAP_HANA_REPLICATE and EXPIRE_SAP_HANA_DB_LOGS jobs stopping progression.</td>
+                <td>Ensures continuity and successful completion of SAP HANA related jobs.</td>
+            </tr>
+            <tr>
+                <td>vCloud Director connection issue</td>
+                <td>Fixes</td>
+                <td>9.0.3-p13</td>
+                <td>Resolved connection failure to vCloud Director after an upgrade.</td>
+                <td>Ensures reliable connection and operational integrity post-upgrade.</td>
+            </tr>
+            <tr>
+                <td>Managed volume chmod issue</td>
+                <td>Fixes</td>
+                <td>9.0.3-p13</td>
+                <td>Fixed the failure of MANAGED_VOLUME_BACKUP jobs due to chmod error.</td>
+                <td>Improves operational consistency and reliability for managed volume backups.</td>
+            </tr>
+            <tr>
+                <td>VCD organization listing issue</td>
+                <td>Fixes</td>
+                <td>9.0.3-p12</td>
+                <td>Fixed the issue where VM Cloud Director (VCD) organizations do not show in the Rubrik CDM UI.</td>
+                <td>Ensures accurate representation of VCD organizations in the UI, aiding management workflows.</td>
+            </tr>
+            <tr>
+                <td>Invalid alerts for archival policy</td>
+                <td>Fixes</td>
+                <td>9.0.3-p12</td>
+                <td>Resolved invalid informational alerts related to archival policy configuration.</td>
+                <td>Reduces false alerts, improving alert accuracy and system monitoring.</td>
+            </tr>
+            <tr>
+                <td>Post-upgrade disconnection of hosts</td>
+                <td>Fixes</td>
+                <td>9.0.3-p12</td>
+                <td>Fixed hosts disconnecting and stopping responses after upgrading to Rubrik CDM version 9.0.3-p10.</td>
+                <td>Ensures continued host connectivity and responsiveness post-upgrade.</td>
+</tr>
+<tr>
+<td>vCenter refresh stuck issue</td>
+                <td>Fixes</td>
+                <td>9.0.3-p11</td>
+                <td>Resolved the issue where a disconnected vCenter refresh stops responding due to a stuck job.</td>
+                <td>Enhances the reliability and consistency of vCenter refresh operations.</td>
+</tr>
+<tr>
+<td>Log backup errors in SQL</td>
+                <td>Fixes</td>
+                <td>9.0.3-p10</td>
+                <td>Fixed the issue of SQL log backup jobs showing "Invalid Log PatchFileStats" error.</td>
+                <td>Improves reliability of SQL log backups and reduces error occurrences</td>
+</tr>
+
+<tr>
+<td>Unauthorized NAS API calls</td>
+                <td>Fixes</td>
+                <td>9.0.3-p9</td>
+                <td>Addressed the failure of NAS API calls due to expired certificates</td>
+                <td>Ensures successful NAS API operations and continuity of backup workflows.</td>
+</tr>
+
+<tr>
+<td>Backup failures in Fileset</td>
+                <td>Fixes</td>
+                <td>9.0.3-p8</td>
+                <td>Resolved backup failures in Fileset due to retrigger requirement.</td>
+                <td>Improves the reliability and success rate of Fileset backups, reducing manual intervention.</td>
+</tr>
+
+<tr>
+<td>SAP HANA incremental snapshot issue</td>
+                <td>Fixes</td>
+                <td>9.0.3-p7/td>
+                <td>Fixed SAP HANA incremental snapshot failures when previous data snapshots fail</td>
+                <td>Ensures reliable incremental snapshot operations for SAP HANA databases./td>
+</tr>
+
+
+  </table>
+    </div>
+</body>
+</html>
